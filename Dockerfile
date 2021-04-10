@@ -1,8 +1,9 @@
 FROM docker:20.10.5-dind AS builder
-
+    
 # FROM: https://github.com/docker-library/golang/blob/f12c995e27fef88ccb984605ab4748737ae3a778/1.16/alpine3.13/Dockerfile
 RUN apk add --no-cache \
-		ca-certificates
+		ca-certificates && \
+    apk add --no-cache bash git openssh
 
 # set up nsswitch.conf for Go's "netgo" implementation
 # - https://github.com/golang/go/blob/go1.9.1/src/net/conf.go#L194-L275
